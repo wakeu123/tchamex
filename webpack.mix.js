@@ -1,0 +1,64 @@
+const mix = require('laravel-mix');
+
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel application. By default, we are compiling the Sass
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
+
+mix
+    .styles(
+        [
+            'node_modules/bootstrap/dist/css/bootstrap.min.css',
+            'node_modules/font-awesome/css/font-awesome.css',
+            //'node_modules/select2/dist/css/select2.css',
+            'resources/assets/css/jquery-ui.css',
+            'resources/assets/css/flaticon.css',
+            //'resources/assets/css/front.css',
+            'node_modules/owl.carousel/dist/assets/owl.carousel.css',
+            'node_modules/aos/dist/aos.css',
+            'resources/assets/css/jquery.fancybox.min.css',
+            'resources/assets/css/owl.theme.default.min.css',
+            'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css',
+        ],
+        'public/css/style.min.css'
+    )
+
+    .copyDirectory('node_modules/datatables/media/images', 'public/images')
+    .copyDirectory('node_modules/font-awesome/fonts', 'public/fonts')
+    //.copyDirectory('resources/assets/admin-lte/img', 'public/img')
+    .copyDirectory('resources/assets/images', 'public/images')
+    .copy('resources/assets/js/scripts.js', 'public/js/scripts.js')
+    .copy('resources/assets/js/custom.js', 'public/js/custom.js')
+    .copy('resources/assets/js/jquery-3.3.1.min.js', 'public/js/jquery.min.js');
+
+/*
+|-----------------------------------------------------------------------
+| BrowserSync
+|-----------------------------------------------------------------------
+|
+| BrowserSync refreshes the Browser if file changes (js, sass, blade.php) are
+| detected.
+| Proxy specifies the location from where the app is served.
+| For more information: https://browsersync.io/docs
+*/
+mix.browserSync({
+  proxy: 'http://localhost:8000',
+  host: 'localhost',
+  open: true,
+  watchOptions: {
+    usePolling: false
+  },
+  files: [
+    'app/**/*.php',
+    'resources/views/**/*.php',
+    'public/js/**/*.js',
+    'public/css/**/*.css',
+    //'resources/docs/**/*.md'
+  ]
+});
