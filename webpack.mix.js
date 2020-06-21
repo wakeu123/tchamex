@@ -14,28 +14,27 @@ const mix = require('laravel-mix');
 mix
     .styles(
         [
-            'node_modules/bootstrap/dist/css/bootstrap.min.css',
-            'node_modules/font-awesome/css/font-awesome.css',
-            //'node_modules/select2/dist/css/select2.css',
-            'resources/assets/css/jquery-ui.css',
-            'resources/assets/css/flaticon.css',
-            //'resources/assets/css/front.css',
-            'node_modules/owl.carousel/dist/assets/owl.carousel.css',
-            'node_modules/aos/dist/aos.css',
-            'resources/assets/css/jquery.fancybox.min.css',
-            'resources/assets/css/owl.theme.default.min.css',
-            'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css',
+
+            'resources/assets/css/companies.css',
+            'resources/assets/css/home.css',
+            'resources/assets/css/mainn.css',
+            'resources/assets/css/mainv3.css',
+            'resources/assets/css/style.css',
         ],
-        'public/css/style.min.css'
+        'public/css/home.min.css'
+    )
+    .scripts(
+        [
+            'resources/assets/js/ast.js',
+        ],
+        'public/js/front.min.js'
     )
 
     .copyDirectory('node_modules/datatables/media/images', 'public/images')
     .copyDirectory('node_modules/font-awesome/fonts', 'public/fonts')
     //.copyDirectory('resources/assets/admin-lte/img', 'public/img')
     .copyDirectory('resources/assets/images', 'public/images')
-    .copy('resources/assets/js/scripts.js', 'public/js/scripts.js')
-    .copy('resources/assets/js/custom.js', 'public/js/custom.js')
-    .copy('resources/assets/js/jquery-3.3.1.min.js', 'public/js/jquery.min.js');
+    //.copy('resources/assets/js/jquery-3.3.1.min.js', 'public/js/jquery.min.js');
 
 /*
 |-----------------------------------------------------------------------

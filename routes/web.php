@@ -11,6 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.layouts.app');
+use Illuminate\Support\Facades\Route;
+
+
+Route::namespace('Front')->group(function () {
+
+    Route::get('/', [
+        'as' => 'home_path',
+        'uses' => 'HomeController@index'
+    ]);
+
+
+});
+
+
+Route::namespace('Admin')->group(function () {
+    Route::get('admin/login', 'LoginController@showLoginForm')->name('admin.login');
+    Route::post('admin/login', 'LoginController@login')->name('admin.login');
+    Route::get('admin/logout', 'LoginController@logout')->name('admin.logout');
 });
